@@ -1,0 +1,33 @@
+@use "../variables" as v;
+
+@mixin inputs () {
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    select{
+        font-family: v.$font-family;
+        font-size: 1.1rem;
+        border: 0px;
+        border-bottom: 1px solid v.$gray;
+        outline: none;
+        letter-spacing: 0.03rem;
+        color: v.$black;
+
+    //marca el elemento con error
+    &:invalid[data-focused = "true"]  {
+        border-bottom: 1px solid v.$error;
+        color: v.$error;
+    }
+
+    //Muestra el mensaje de error
+    &:invalid[data-focused = "true"] ~ p {
+        display: block;
+    }
+// Muestra el mensaje de eror con Formik
+    &.error-forgot-input {
+        border-bottom: 1px solid v.$error;
+        color: v.$error;
+    }
+    
+    }
+}
